@@ -25,7 +25,7 @@
 //  #include <WProgram.h>
   #include "WaspClasses.h"
 #endif
-
+#include "WaspGPRSconstants.h"
 // Constructors ////////////////////////////////////////////////////////////////
 
 WaspGPRS::WaspGPRS()
