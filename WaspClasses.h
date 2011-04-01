@@ -49,6 +49,10 @@
 #include "WaspXBeeConstants.h"
 #endif
 
+//#ifndef __WASPGPRSCONSTANTS_H__
+//#include "WaspGPRSconstants.h"
+//#endif
+
 #include "wiring.h"
 
 // SD
@@ -66,7 +70,7 @@
 #include "WaspXBee.h"
 #include "WaspGPS.h"
 #include "WaspGPRS.h"
-#include "WaspGPRSconstants.h"
+//#include "WaspGPRSconstants.h"
 #include "Wire.h"
 #include "WaspRTC.h"
 #include "WaspACC.h"
@@ -85,7 +89,6 @@
 #include "WaspBT.h"
 #include "WaspBTConstants.h"
 #include "WaspSensorSmart.h"
-
 
 
 // random prototypes
