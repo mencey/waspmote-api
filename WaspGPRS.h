@@ -502,28 +502,28 @@ class WaspGPRS
     	/*!
 		It stores the ID of the last socket opened
 	 */
-	uint8_t socket_ID[4];
+	static uint8_t socket_ID[4];
 	
 	//! Variable : data received when reading an URL
     	/*!
 		It stores up to 100 bytes from an URL
 	 */
-	char data_URL[100];
+	static char data_URL[100];
 	
 	//! Variable : amount of data read from an URL or from a socket
     	/*!
 	 */
-	uint16_t data_read;
+	static uint16_t data_read;
 	
 	//! Variable : Cell ID number
     	/*!
 	 */
-	char cellID[4];
+	static char cellID[4];
       
 	//! Variable : RSSI value
     	/*!
 	 */
-	char RSSI[2];
+	static char RSSI[2];
 	
 	//! Variable : Array for storing the answer to the command sent
     	/*!
@@ -538,32 +538,32 @@ class WaspGPRS
 	//! Variable : Email address from the last email received
     	/*!
 	 */
-	char emailAddress[31];
+	static char emailAddress[31];
 	
 	//! Variable : Last email received subject
     	/*!
 	 */
-	char subject[31];
+	static char subject[31];
 	
 	//! Variable : Last email received subject
     	/*!
 	 */
-	char body[101];
+	static char body[101];
         
         //! Variable : IMSI from the SIM card
     	/*!
          */
-        char IMSI[20];
+	static char IMSI[20];
         
         //! Variable : IMEI from the SIM card
     	/*!
          */
-        char IMEI[20];
+	static char IMEI[20];
         
         //! Variable : specifies if the GPRS modules is connected to the network (1:connected ; 0:connected)
     	/*!
          */
-        uint8_t connected;
+	uint8_t connected;
 	
       	//! class constructor
     	/*!
