@@ -973,6 +973,9 @@ uint8_t* WaspSD::catBin (const char* filename, int32_t offset, uint16_t scope)
 	if(!fat_seek_file(_fd, &offset, FAT_SEEK_SET))
 	{
 		sprintf(buffer, "error seeking on: %s\n", filename);
+//?
+		flag |= SEEK_FILE_ERROR; // Set error flag
+
 		fat_close_file(_fd);
 		return bufferBin;
 	}
@@ -1625,7 +1628,6 @@ uint8_t WaspSD::writeSD(const char* filename, uint8_t* str, int32_t offset)
 		fat_close_file(_fd);
 		exit = 1;
 	}
-
 	if(!exit) fat_close_file(_fd);
 	else flag |= FILE_WRITING_ERROR;
 	return !exit;
