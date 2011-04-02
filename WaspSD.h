@@ -126,7 +126,7 @@
 #define FILE_CREATION_ERROR 128
 #define DIR_CREATION_ERROR 256
 #define FILE_WRITING_ERROR 512
-
+#define SEEK_FILE_ERROR 1024
 
 /*! \def NOTHING_FAILED_em
     \brief Flag error messages. Nothing failed in this case
