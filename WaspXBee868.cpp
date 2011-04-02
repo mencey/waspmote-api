@@ -25,6 +25,23 @@
 	#include "WaspClasses.h"
 #endif
 
+char	get_RF_errors_868[] =	"7E0004085245520E";
+char	get_good_pack_868[] =	"7E0004085247441A";
+char	get_channel_RSSI_868[] =	"7E0005085252430000";
+char	get_trans_errors_868[] =	"7E000408525452FF";
+char	get_temperature_868[] =	"7E00040852545001";
+char	get_supply_Volt_868[] =	"7E0004085225562A";
+char	get_device_type_868[] =	"7E0004085244441D";
+char	get_payload_bytes_868[] =	"7E000408524E5007";
+char	set_mult_broadcast_868[] =	"7E000508524D540000";
+char	get_mult_broadcast_868[] =	"7E000408524D5404";
+char	set_retries_868[] =		"7E0005085252520000";
+char	get_retries_868[] =		"7E00040852525201";
+char	get_duty_cicle_868[] =	"7E0004085244431E";
+char	get_reset_reason_868[] =	"7E00040852522330";
+char	get_ACK_errors_868[] =	"7E00040852544110";
+
+
 void	WaspXBee868::init(uint8_t protocol_used, uint8_t frequency, uint8_t model_used)
 {
 	protocol=protocol_used;
