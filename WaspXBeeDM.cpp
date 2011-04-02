@@ -25,6 +25,22 @@
 	#include "WaspClasses.h"
 #endif
 
+char	get_RF_errors_DM[] =	"7E0004085245520E";
+char	get_good_pack_DM[] =	"7E0004085247441A";
+char	get_channel_RSSI_DM[] =	"7E0005085252430000";
+char	get_trans_errors_DM[] =	"7E000408525452FF";
+char	set_network_hops_DM[] =	"7E000508524E480000";
+char	get_network_hops_DM[] =	"7E000408524E480F";
+char	set_network_delay_DM[] =	"7E000508524E4E0000";
+char	get_network_delay_DM[] =	"7E000408524E4E09";
+char	set_network_route_DM[] =	"7E000508524E510000";
+char	get_network_route_DM[] =	"7E000408524E5106";
+char	set_network_retries_DM[] =	"7E000508524D520000";
+char	get_network_retries_DM[] =	"7E000408524D5206";
+char	get_temperature_DM[] =	"7E00040852545001";
+char	get_supply_Volt_DM[] =	"7E0004085225562A";
+char	restore_compiled_DM[] =	"7E00040852523122";
+
 void WaspXBeeDM::init(uint8_t protocol_used, uint8_t frequency, uint8_t model_used)
 {
 	protocol=protocol_used;
