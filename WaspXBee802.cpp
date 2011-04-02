@@ -25,6 +25,25 @@
 	#include "WaspClasses.h"
 #endif
 
+#ifndef __WASPXBEECONSTANTS_H__
+#include "WaspXBeeConstants.h"
+#endif
+
+char	set_retries_802[] =		"7E0005085252520000";
+char	get_retries_802[] =		"7E00040852525201";
+char set_delay_slots_802[] =	"7E00050852524E0000";
+char get_delay_slots_802[] =	"7E00040852524E05";
+char set_mac_mode_802[] =	"7E000508524D4D0000";
+char get_mac_mode_802[] =	"7E000408524D4D0B";
+char set_energy_thres_802[] =	"7E0005085243410000";
+char get_energy_thres_802[] =	"7E00040852434121";
+char get_CCA_802[] =		"7E0004085245431D";
+char reset_CCA_802[] =		"7E000508524543001D";
+char get_ACK_802[] =		"7E0004085245411F";
+char reset_ACK_802[] =		"7E000508524541001F";
+char	set_duration_energy[] =	"7E0005085245440000";
+
+
 void	WaspXBee802::init(uint8_t protocol_used, uint8_t frequency, uint8_t model_used)
 {
 	protocol=protocol_used;
