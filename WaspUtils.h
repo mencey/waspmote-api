@@ -97,7 +97,7 @@ class WaspUtils
   /*!
 	It stores the last free available memory size returned by 'getFreeMemory' function
   */ 
-  uint16_t freeMemory;
+  static uint16_t freeMemory;
   
   //! Variable : buffer to store incoming data
   /*!
