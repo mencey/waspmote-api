@@ -184,129 +184,129 @@
 
 
 /************************* 802.15.4 AT COMMANDS ************************************************/
-#define	set_retries_802		"7E0005085252520000"
-#define	get_retries_802		"7E00040852525201"
-#define set_delay_slots_802	"7E00050852524E0000"
-#define get_delay_slots_802	"7E00040852524E05"
-#define set_mac_mode_802	"7E000508524D4D0000"
-#define get_mac_mode_802	"7E000408524D4D0B"
-#define set_energy_thres_802	"7E0005085243410000"
-#define get_energy_thres_802	"7E00040852434121"
-#define get_CCA_802		"7E0004085245431D"
-#define reset_CCA_802		"7E000508524543001D"
-#define get_ACK_802		"7E0004085245411F"
-#define reset_ACK_802		"7E000508524541001F"
-#define	set_duration_energy	"7E0005085245440000"
+/*char	set_retries_802[] =		"7E0005085252520000";
+char	get_retries_802[] =		"7E00040852525201";
+char set_delay_slots_802[] =	"7E00050852524E0000";
+char get_delay_slots_802[] =	"7E00040852524E05";
+char set_mac_mode_802[] =	"7E000508524D4D0000";
+char get_mac_mode_802[] =	"7E000408524D4D0B";
+char set_energy_thres_802[] =	"7E0005085243410000";
+char get_energy_thres_802[] =	"7E00040852434121";
+char get_CCA_802[] =		"7E0004085245431D";
+char reset_CCA_802[] =		"7E000508524543001D";
+char get_ACK_802[] =		"7E0004085245411F";
+char reset_ACK_802[] =		"7E000508524541001F";
+char	set_duration_energy[] =	"7E0005085245440000";	*/
 
 /************************* 868 AT COMMANDS ************************************************/
-#define	get_RF_errors_868	"7E0004085245520E"
-#define	get_good_pack_868	"7E0004085247441A"
-#define	get_channel_RSSI_868	"7E0005085252430000"
-#define	get_trans_errors_868	"7E000408525452FF"
-#define	get_temperature_868	"7E00040852545001"
-#define	get_supply_Volt_868	"7E0004085225562A"
-#define	get_device_type_868	"7E0004085244441D"
-#define	get_payload_bytes_868	"7E000408524E5007"
-#define	set_mult_broadcast_868	"7E000508524D540000"
-#define	get_mult_broadcast_868	"7E000408524D5404"
-#define	set_retries_868		"7E0005085252520000"
-#define	get_retries_868		"7E00040852525201"
-#define	get_duty_cicle_868	"7E0004085244431E"
-#define	get_reset_reason_868	"7E00040852522330"
-#define	get_ACK_errors_868	"7E00040852544110"
+/*char	get_RF_errors_868[] =	"7E0004085245520E";
+char	get_good_pack_868[] =	"7E0004085247441A";
+char	get_channel_RSSI_868[] =	"7E0005085252430000";
+char	get_trans_errors_868[] =	"7E000408525452FF";
+char	get_temperature_868[] =	"7E00040852545001";
+char	get_supply_Volt_868[] =	"7E0004085225562A";
+char	get_device_type_868[] =	"7E0004085244441D";
+char	get_payload_bytes_868[] =	"7E000408524E5007";
+char	set_mult_broadcast_868[] =	"7E000508524D540000";
+char	get_mult_broadcast_868[] =	"7E000408524D5404";
+char	set_retries_868[] =		"7E0005085252520000";
+char	get_retries_868[] =		"7E00040852525201";
+char	get_duty_cicle_868[] =	"7E0004085244431E";
+char	get_reset_reason_868[] =	"7E00040852522330";
+char	get_ACK_errors_868[] =	"7E00040852544110";	*/
 
 /************************* CORE AT COMMANDS ************************************************/
-#define	get_own_mac_low		"7E00040852534C06"
-#define	get_own_mac_high	"7E0004085253480A"
-#define	set_own_net_address	"7E000608524D59000000"
-#define	get_own_net_address	"7E000408524D59FF"
-#define	set_baudrate		"7E0005085242440000"
-#define	set_api_mode		"7E0005085241500000"
-#define	set_api_options		"7E00050852414F0000"
-#define	set_pan			"7E000608524944000000"
-#define	set_pan_zb		"7E000C08524944000000000000000000"
-#define	get_pan			"7E00040852494418"
-#define	set_sleep_mode_xbee	"7E00050852534D0000"
-#define	get_sleep_mode_xbee	"7E00040852534D05"
-#define	set_awake_time		"7E000608525354000000"
-#define	set_awake_time_DM	"7E00070852535400000000"
-#define	set_sleep_time		"7E000608525350000000"
-#define	set_sleep_time_DM	"7E00070852535000000000"
-#define	set_channel		"7E0005085243480000"
-#define	get_channel		"7E0004085243481A"
-#define	get_NI			"7E000408524E490E"
-#define	set_scanning_time	"7E000508524E540000"
-#define	set_scanning_time_DM	"7E000608524E54000000"
-#define	get_scanning_time	"7E000408524E5403"
-#define	set_discov_options	"7E000508524E4F0000"
-#define	get_discov_options	"7E000408524E4F08"
-#define	write_values		"7E000408525752FC"
-#define	set_scanning_channel	"7E000608525343000000"
-#define	get_scanning_channel	"7E0004085253430F"
-#define	get_duration_energy	"7E0004085253440E"
-#define	set_link_key		"7E001408524B590000000000000000000000000000000000"
-#define	set_encryption		"7E0005085245450000"
-#define	set_power_level		"7E00050852504C0000"
-#define	get_RSSI		"7E0004085244421F"
-#define	get_hard_version	"7E00040852485607"
-#define	get_soft_version	"7E000408525652FD"
-#define	set_RSSI_time		"7E0005085252500000"
-#define	get_RSSI_time		"7E00040852525003"
-#define	apply_changes		"7E00040852414321"
-#define	reset_xbee		"7E0004085246520D"
-#define	reset_defaults_xbee	"7E0004085252450E"
-#define	set_sleep_options_xbee	"7E00050852534F0000"
-#define	get_sleep_options_xbee	"7E00040852534F03"
-#define	scan_network		"7E000408524E4413"
+/*char	get_own_mac_low[] =		"7E00040852534C06";
+char	get_own_mac_high[] =	"7E0004085253480A";
+char	set_own_net_address[] =	"7E000608524D59000000";
+char	get_own_net_address[] =	"7E000408524D59FF";
+char	set_baudrate[] =		"7E0005085242440000";
+char	set_api_mode[] =		"7E0005085241500000";
+char	set_api_options[] =		"7E00050852414F0000";
+char	set_pan[] =			"7E000608524944000000";
+char	set_pan_zb[] =		"7E000C08524944000000000000000000";
+char	get_pan[] =			"7E00040852494418";
+char	set_sleep_mode_xbee[] =	"7E00050852534D0000";
+char	get_sleep_mode_xbee[] =	"7E00040852534D05";
+char	set_awake_time[] =		"7E000608525354000000";
+char	set_awake_time_DM[] =	"7E00070852535400000000";
+char	set_sleep_time[] =		"7E000608525350000000";
+char	set_sleep_time_DM[] =	"7E00070852535000000000";
+char	set_channel[] =		"7E0005085243480000";
+char	get_channel[] =		"7E0004085243481A";
+char	get_NI[] =			"7E000408524E490E";
+char	set_scanning_time[] =	"7E000508524E540000";
+char	set_scanning_time_DM[] =	"7E000608524E54000000";
+char	get_scanning_time[] =	"7E000408524E5403";
+char	set_discov_options[] =	"7E000508524E4F0000";
+char	get_discov_options[] =	"7E000408524E4F08";
+char	write_values[] =		"7E000408525752FC";
+char	set_scanning_channel[] =	"7E000608525343000000";
+char	get_scanning_channel[] =	"7E0004085253430F";
+char	get_duration_energy[] =	"7E0004085253440E";
+char	set_link_key[] =		"7E001408524B590000000000000000000000000000000000";
+char	set_encryption[] =		"7E0005085245450000";
+char	set_power_level[] =		"7E00050852504C0000";
+char	get_RSSI[] =		"7E0004085244421F";
+char	get_hard_version[] =	"7E00040852485607";
+char	get_soft_version[] =	"7E000408525652FD";
+char	set_RSSI_time[] =		"7E0005085252500000";
+char	get_RSSI_time[] =		"7E00040852525003";
+char	apply_changes[] =		"7E00040852414321";
+char	reset_xbee[] =		"7E0004085246520D";
+char	reset_defaults_xbee[] =	"7E0004085252450E";
+char	set_sleep_options_xbee[] =	"7E00050852534F0000";
+char	get_sleep_options_xbee[] =	"7E00040852534F03";
+char	scan_network[] =		"7E000408524E4413";		*/
 
 /************************* DIGIMESH/900 AT COMMANDS ************************************************/
-#define	get_RF_errors_DM	"7E0004085245520E"
-#define	get_good_pack_DM	"7E0004085247441A"
-#define	get_channel_RSSI_DM	"7E0005085252430000"
-#define	get_trans_errors_DM	"7E000408525452FF"
-#define	set_network_hops_DM	"7E000508524E480000"
-#define	get_network_hops_DM	"7E000408524E480F"
-#define	set_network_delay_DM	"7E000508524E4E0000"
-#define	get_network_delay_DM	"7E000408524E4E09"
-#define	set_network_route_DM	"7E000508524E510000"
-#define	get_network_route_DM	"7E000408524E5106"
-#define	set_network_retries_DM	"7E000508524D520000"
-#define	get_network_retries_DM	"7E000408524D5206"
-#define	get_temperature_DM	"7E00040852545001"
-#define	get_supply_Volt_DM	"7E0004085225562A"
-#define	restore_compiled_DM	"7E00040852523122"
+/*char	get_RF_errors_DM[] =	"7E0004085245520E";
+char	get_good_pack_DM[] =	"7E0004085247441A";
+char	get_channel_RSSI_DM[] =	"7E0005085252430000";
+char	get_trans_errors_DM[] =	"7E000408525452FF";
+char	set_network_hops_DM[] =	"7E000508524E480000";
+char	get_network_hops_DM[] =	"7E000408524E480F";
+char	set_network_delay_DM[] =	"7E000508524E4E0000";
+char	get_network_delay_DM[] =	"7E000408524E4E09";
+char	set_network_route_DM[] =	"7E000508524E510000";
+char	get_network_route_DM[] =	"7E000408524E5106";
+char	set_network_retries_DM[] =	"7E000508524D520000";
+char	get_network_retries_DM[] =	"7E000408524D5206";
+char	get_temperature_DM[] =	"7E00040852545001";
+char	get_supply_Volt_DM[] =	"7E0004085225562A";
+char	restore_compiled_DM[] =	"7E00040852523122";		*/
 
 /************************* ZIGBEE AT COMMANDS ************************************************/
-#define	reset_network_ZB	"7E000508524E520000"
-#define	get_parent_NA_ZB	"7E000408524D5008"
-#define	get_rem_children_ZB	"7E000408524E4314"
-#define	set_device_type_ZB	"7E0005085244440000"
-#define	get_device_type_ZB	"7E0004085244441D"
-#define	get_payload_ZB		"7E000408524E5007"
-#define	get_ext_PAN_ZB		"7E000408524F5006"
-#define	get_opt_PAN_ZB		"7E000408524F490D"
-#define	set_max_uni_hops_ZB	"7E000508524E480000"
-#define	get_max_uni_hops_ZB	"7E000408524E480F"
-#define	set_max_brd_hops_ZB	"7E0005085242480000"
-#define	get_max_brd_hops_ZB	"7E0004085242481B"
-#define	set_stack_profile_ZB	"7E000508525A530000"
-#define	get_stack_profile_ZB	"7E000408525A53F8"
-#define	set_period_sleep_ZB	"7E00050852534E0000"
-#define	set_join_time_ZB	"7E000508524E4A0000"
-#define	get_join_time_ZB	"7E000408524E4A0D"
-#define	set_channel_verif_ZB	"7E000508524A560000"
-#define	get_channel_verif_ZB	"7E000408524A5605"
-#define	set_join_notif_ZB	"7E000508524A4E0000"
-#define	get_join_notif_ZB	"7E000408524A4E0D"
-#define	set_aggreg_notif_ZB	"7E0005085241520000"
-#define	get_aggreg_notif_ZB	"7E00040852415212"
-#define	get_assoc_indic_ZB	"7E0004085241491B"
-#define	set_encryp_options_ZB	"7E00050852454F0000"
-#define	get_encryp_options_ZB	"7E00040852454F11"
-#define	set_netwk_key_ZB	"7E001408524E4B0000000000000000000000000000000000"
-#define	set_power_mode_ZB	"7E00050852504D0000"
-#define	get_power_mode_ZB	"7E00040852504D08"
-#define	get_supply_Volt_ZB	"7E0004085225562A"
-#define	set_duration_energy_ZB	"7E0005085253440000"
+/*char	reset_network_ZB[] =	"7E000508524E520000";
+char	get_parent_NA_ZB[] =	"7E000408524D5008";
+char	get_rem_children_ZB[] =	"7E000408524E4314";
+char	set_device_type_ZB[] =	"7E0005085244440000";
+char	get_device_type_ZB[] =	"7E0004085244441D";
+char	get_payload_ZB[] =		"7E000408524E5007";
+char	get_ext_PAN_ZB[] =		"7E000408524F5006";
+char	get_opt_PAN_ZB[] =		"7E000408524F490D";
+char	set_max_uni_hops_ZB[] =	"7E000508524E480000";
+char	get_max_uni_hops_ZB[] =	"7E000408524E480F";
+char	set_max_brd_hops_ZB[] =	"7E0005085242480000";
+char	get_max_brd_hops_ZB[] =	"7E0004085242481B";
+char	set_stack_profile_ZB[] =	"7E000508525A530000";
+char	get_stack_profile_ZB[] =	"7E000408525A53F8";
+char	set_period_sleep_ZB[] =	"7E00050852534E0000";
+char	set_join_time_ZB[] =	"7E000508524E4A0000";
+char	get_join_time_ZB[] =	"7E000408524E4A0D";
+char	set_channel_verif_ZB[] =	"7E000508524A560000";
+char	get_channel_verif_ZB[] =	"7E000408524A5605";
+char	set_join_notif_ZB[] =	"7E000508524A4E0000";
+char	get_join_notif_ZB[] =	"7E000408524A4E0D";
+char	set_aggreg_notif_ZB[] =	"7E0005085241520000";
+char	get_aggreg_notif_ZB[] =	"7E00040852415212";
+char	get_assoc_indic_ZB[] =	"7E0004085241491B";
+char	set_encryp_options_ZB[] =	"7E00050852454F0000";
+char	get_encryp_options_ZB[] =	"7E00040852454F11";
+char	set_netwk_key_ZB[] =	"7E001408524E4B0000000000000000000000000000000000";
+char	set_power_mode_ZB[] =	"7E00050852504D0000";
+char	get_power_mode_ZB[] =	"7E00040852504D08";
+char	get_supply_Volt_ZB[] =	"7E0004085225562A";
+char	set_duration_energy_ZB[] =	"7E0005085253440000";		*/
 
 #endif
