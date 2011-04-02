@@ -1628,6 +1628,8 @@ uint8_t WaspSD::writeSD(const char* filename, uint8_t* str, int32_t offset)
 		fat_close_file(_fd);
 		exit = 1;
 	}
+	USB.print("data_len:");USB.print(data_len,10);
+	USB.print("offset:");USB.print(offset,10);
 	if(!exit) fat_close_file(_fd);
 	else flag |= FILE_WRITING_ERROR;
 	return !exit;
