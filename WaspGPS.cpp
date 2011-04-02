@@ -950,7 +950,7 @@ uint8_t WaspGPS::saveEphems(const char* filename)
 	uint16_t interval=1000;
 	long previous=millis();
 	int8_t error=2;
-	uint8_t est=1;
+//	uint8_t est=1;
 	// initialize the flags
 	flag = 0; SD.flag = 0;
 	uint8_t aux=0;
@@ -1000,8 +1000,10 @@ uint8_t WaspGPS::saveEphems(const char* filename)
 				tempData[counter3-6]=ByteIN[counter3];
 				counter3++;
 			}
-			tempData[counter3]=0xAA;
-			tempData[counter3+1]=0xAA;
+			tempData[counter3-6]=0xAA;
+			tempData[counter3-5]=0xAA;
+//			tempData[counter3]=0xAA;
+//			tempData[counter3+1]=0xAA;
 			if(SD.writeSD(filename,tempData,aux*90)) error=1;
 			else error=0;
 			aux++;
@@ -1010,7 +1012,17 @@ uint8_t WaspGPS::saveEphems(const char* filename)
 		end=0;
 		previous=millis();
 	}
-	if (error==1) if(SD.writeSD(filename,endFile,aux*90)) error=1;
+	USB.print("aux:");USB.print(aux,10);
+//?	if (error==1) if(SD.writeSD(filename,endFile,aux*90)) error=1;
+	if (error==1)
+	{
+		USB.print("no error ");
+		if(!SD.writeSD(filename,endFile,aux*90))
+		{
+			error=0;
+			USB.println("error");
+		}
+	}
 	free(ByteIN);
 	free(tempData);
 	ByteIN=NULL;
@@ -1046,7 +1058,7 @@ uint8_t WaspGPS::loadEphems(const char* filename)
 	uint8_t end=0;
 	uint16_t interval=1000;
 	long previous=millis();
-	int8_t error=2;
+	int8_t error=0;
 	SD.flag = 0;
 	
 	/*** Disable All Binary Messages ***/
@@ -1058,11 +1070,17 @@ uint8_t WaspGPS::loadEphems(const char* filename)
 	}
 	while( !endFile )
 	{
+//		USB.print(SD.bufferBin[0],16);USB.print(SD.bufferBin[1],16);USB.print(SD.bufferBin[2],16);
+//				USB.print(SD.bufferBin[3],16);USB.print(SD.bufferBin[4],16);
 		SD.catBin(filename,offset,5);
-		
+		USB.print(SD.bufferBin[0],16);USB.print(SD.bufferBin[1],16);USB.print(SD.bufferBin[2],16);
+		USB.print(SD.bufferBin[3],16);USB.print(SD.bufferBin[4],16);
 		if( (SD.bufferBin[0]==0xAA) && (SD.bufferBin[1]==0xBB) && (SD.bufferBin[2]==0xCC) &&
 				   (SD.bufferBin[3]==0xCC) && (SD.bufferBin[4]==0xBB) ) endFile=1;
-		
+//?
+		if((SD.flag & FILE_OPEN_ERROR) || (SD.flag & SEEK_FILE_ERROR))
+			endFile=1;
+
 		if (!endFile)
 		{
 			for(int a=0;a<5;a++) // Copy first 5 already read bytes
@@ -1071,6 +1089,8 @@ uint8_t WaspGPS::loadEphems(const char* filename)
 			}
 			offset+=5;
 			SD.catBin(filename,offset,85);
+			if(SD.flag & SEEK_FILE_ERROR)
+				endFile=1;
 			
 			tempData[0]=0xA0;
 			tempData[1]=0xA2;
@@ -1105,7 +1125,7 @@ uint8_t WaspGPS::loadEphems(const char* filename)
 				{
 					end=1;
 					serialFlush(_uart);
-				} 
+				}
 			}
 			counter3=0;
 			end=0;
@@ -1117,6 +1137,7 @@ uint8_t WaspGPS::loadEphems(const char* filename)
 			offset+=85;
 		}
 	}
+	USB.print('b');
 	free(answer);
 	free(tempData);
 	answer=NULL;
