@@ -418,7 +418,7 @@ class WaspGPS
     
     	FALSE if the last reading is not valid.
      */ 
-    bool fixValid;
+    static bool fixValid;
     
     //! Variable : Flag used to determine if an error occurred while executing some function
     /*!
