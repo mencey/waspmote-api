@@ -1006,6 +1006,7 @@ uint8_t WaspGPS::saveEphems(const char* filename)
 //			tempData[counter3+1]=0xAA;
 			if(SD.writeSD(filename,tempData,aux*90)) error=1;
 			else error=0;
+			USB.print(SD.getFileSize(filename),10);
 			aux++;
 		}
 		counter3=0;
@@ -1017,16 +1018,23 @@ uint8_t WaspGPS::saveEphems(const char* filename)
 	if (error==1)
 	{
 		USB.print("no error ");
+		if(!SD.writeSD(filename,"prue",aux*90))
+		{
+			error=0;
+			USB.println("error");
+		}
 		if(!SD.writeSD(filename,endFile,aux*90))
 		{
 			error=0;
 			USB.println("error");
 		}
+		USB.print(SD.getFileSize(filename),10);
 	}
 	free(ByteIN);
 	free(tempData);
 	ByteIN=NULL;
 	tempData=NULL;
+	USB.print(SD.getFileSize(filename),10);
 	return error;
 }
 
@@ -1067,7 +1075,9 @@ uint8_t WaspGPS::loadEphems(const char* filename)
 	while(serialAvailable(_uart)>0)
 	{
 		serialRead(_uart);
+//		USB.print('x');
 	}
+	USB.print('y');
 	while( !endFile )
 	{
 //		USB.print(SD.bufferBin[0],16);USB.print(SD.bufferBin[1],16);USB.print(SD.bufferBin[2],16);
@@ -1080,9 +1090,12 @@ uint8_t WaspGPS::loadEphems(const char* filename)
 //?
 		if((SD.flag & FILE_OPEN_ERROR) || (SD.flag & SEEK_FILE_ERROR))
 			endFile=1;
+//		USB.println(SD.buffer);
+//		USB.print('z');
 
 		if (!endFile)
 		{
+//			USB.print('a');
 			for(int a=0;a<5;a++) // Copy first 5 already read bytes
 			{
 				tempData[a+5]=SD.bufferBin[a];
@@ -1126,6 +1139,7 @@ uint8_t WaspGPS::loadEphems(const char* filename)
 					end=1;
 					serialFlush(_uart);
 				}
+//				USB.print('a');
 			}
 			counter3=0;
 			end=0;
