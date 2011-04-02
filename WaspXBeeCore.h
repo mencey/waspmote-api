@@ -443,6 +443,9 @@ typedef struct index
  */
 class WaspXBeeCore
 {
+	friend uint8_t setDestAddressLow(char*);
+	friend void gen_data2(const char*, char*);
+
   public:
 	  
 	//! class constructor
@@ -932,7 +935,7 @@ class WaspXBeeCore
 	//! Variable : Baudrate, speed used to communicate with the XBee module (0-5)
 	/*!    
 	 */
-        uint8_t baudrate;
+	static uint8_t baudrate;
 	
 	//! Variable : Api value selected (0-2)
 	/*!    
@@ -977,7 +980,7 @@ class WaspXBeeCore
 	//! Variable : real number of complete received packets
 	/*!    
 	 */
-	uint8_t totalPacketsReceived;
+	static uint8_t totalPacketsReceived;
 	
 	//! Variable : indicates the position in 'packet_finished' array of each packet
 	/*!    
@@ -1012,7 +1015,7 @@ class WaspXBeeCore
 	//! Variable : Node Identifier
 	/*!    
 	 */
-	char nodeID[20];
+	static char nodeID[20];
 	
 	//! Variable : time meanwhile the Node Discovery is scanning
 	/*!    
@@ -1032,17 +1035,17 @@ class WaspXBeeCore
 	//! Variable : energy found on each channel
 	/*!    
 	 */
-	uint8_t energyChannel[20];
+	static uint8_t energyChannel[20];
 	
 	//! Variable : time the Energy Scan is going to be performed
 	/*!    
 	 */
-	uint8_t timeEnergyChannel;
+	static uint8_t timeEnergyChannel;
 	
 	//! Variable : 128b AES Link key
 	/*!    
 	 */
-	char linkKey[16];
+	static char linkKey[16];
 	
 	//! Variable : encryption mode (ON/OFF) (0-1)
 	/*!    
@@ -1062,17 +1065,17 @@ class WaspXBeeCore
 	//! Variable : software Version
 	/*!    
 	 */
-	uint8_t softVersion[2];
+	static uint8_t softVersion[2];
 	
 	//! Variable : hardware Version
 	/*!    
 	 */
-	uint8_t hardVersion[2];
+	static uint8_t hardVersion[2];
 	
 	//! Variable : received Signal Strength Indicator
 	/*!    
 	 */
-	uint8_t valueRSSI[2];
+	static uint8_t valueRSSI[2];
 	
 	//! Variable : sleep Options
 	/*!    
