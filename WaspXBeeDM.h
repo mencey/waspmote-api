@@ -238,4 +238,4 @@ class WaspXBeeDM : public WaspXBeeCore
 
 extern WaspXBeeDM	xbeeDM;
 
-#endif;
+#endif
