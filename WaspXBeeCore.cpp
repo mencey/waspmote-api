@@ -25,6 +25,56 @@
 	#include "WaspClasses.h"
 #endif
 
+#ifndef __WASPXBEECONSTANTS_H__
+#include "WaspXBeeConstants.h"
+#endif
+
+char	get_own_mac_low[] =		"7E00040852534C06";
+char	get_own_mac_high[] =	"7E0004085253480A";
+char	set_own_net_address[] =	"7E000608524D59000000";
+char	get_own_net_address[] =	"7E000408524D59FF";
+char	set_baudrate[] =		"7E0005085242440000";
+char	set_api_mode[] =		"7E0005085241500000";
+char	set_api_options[] =		"7E00050852414F0000";
+char	set_pan[] =			"7E000608524944000000";
+char	set_pan_zb[] =		"7E000C08524944000000000000000000";
+char	get_pan[] =			"7E00040852494418";
+char	set_sleep_mode_xbee[] =	"7E00050852534D0000";
+char	get_sleep_mode_xbee[] =	"7E00040852534D05";
+char	set_awake_time[] =		"7E000608525354000000";
+char	set_awake_time_DM[] =	"7E00070852535400000000";
+char	set_sleep_time[] =		"7E000608525350000000";
+char	set_sleep_time_DM[] =	"7E00070852535000000000";
+char	set_channel[] =		"7E0005085243480000";
+char	get_channel[] =		"7E0004085243481A";
+char	get_NI[] =			"7E000408524E490E";
+char	set_scanning_time[] =	"7E000508524E540000";
+char	set_scanning_time_DM[] =	"7E000608524E54000000";
+char	get_scanning_time[] =	"7E000408524E5403";
+char	set_discov_options[] =	"7E000508524E4F0000";
+char	get_discov_options[] =	"7E000408524E4F08";
+char	write_values[] =		"7E000408525752FC";
+char	set_scanning_channel[] =	"7E000608525343000000";
+char	get_scanning_channel[] =	"7E0004085253430F";
+char	get_duration_energy[] =	"7E0004085253440E";
+char	set_link_key[] =		"7E001408524B590000000000000000000000000000000000";
+char	set_encryption[] =		"7E0005085245450000";
+char	set_power_level[] =		"7E00050852504C0000";
+char	get_RSSI[] =		"7E0004085244421F";
+char	get_hard_version[] =	"7E00040852485607";
+char	get_soft_version[] =	"7E000408525652FD";
+char	set_RSSI_time[] =		"7E0005085252500000";
+char	get_RSSI_time[] =		"7E00040852525003";
+char	apply_changes[] =		"7E00040852414321";
+char	reset_xbee[] =		"7E0004085246520D";
+char	reset_defaults_xbee[] =	"7E0004085252450E";
+char	set_sleep_options_xbee[] =	"7E00050852534F0000";
+char	get_sleep_options_xbee[] =	"7E00040852534F03";
+char	scan_network[] =		"7E000408524E4413";
+extern char	set_duration_energy[];
+extern char	set_duration_energy_ZB[];
+
+
 /*
 Function: Initializes all the global variables that will be used later
 Returns: Nothing
