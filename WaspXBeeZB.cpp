@@ -25,6 +25,38 @@
 	#include "WaspClasses.h"
 #endif
 
+char	reset_network_ZB[] =	"7E000508524E520000";
+char	get_parent_NA_ZB[] =	"7E000408524D5008";
+char	get_rem_children_ZB[] =	"7E000408524E4314";
+char	set_device_type_ZB[] =	"7E0005085244440000";
+char	get_device_type_ZB[] =	"7E0004085244441D";
+char	get_payload_ZB[] =		"7E000408524E5007";
+char	get_ext_PAN_ZB[] =		"7E000408524F5006";
+char	get_opt_PAN_ZB[] =		"7E000408524F490D";
+char	set_max_uni_hops_ZB[] =	"7E000508524E480000";
+char	get_max_uni_hops_ZB[] =	"7E000408524E480F";
+char	set_max_brd_hops_ZB[] =	"7E0005085242480000";
+char	get_max_brd_hops_ZB[] =	"7E0004085242481B";
+char	set_stack_profile_ZB[] =	"7E000508525A530000";
+char	get_stack_profile_ZB[] =	"7E000408525A53F8";
+char	set_period_sleep_ZB[] =	"7E00050852534E0000";
+char	set_join_time_ZB[] =	"7E000508524E4A0000";
+char	get_join_time_ZB[] =	"7E000408524E4A0D";
+char	set_channel_verif_ZB[] =	"7E000508524A560000";
+char	get_channel_verif_ZB[] =	"7E000408524A5605";
+char	set_join_notif_ZB[] =	"7E000508524A4E0000";
+char	get_join_notif_ZB[] =	"7E000408524A4E0D";
+char	set_aggreg_notif_ZB[] =	"7E0005085241520000";
+char	get_aggreg_notif_ZB[] =	"7E00040852415212";
+char	get_assoc_indic_ZB[] =	"7E0004085241491B";
+char	set_encryp_options_ZB[] =	"7E00050852454F0000";
+char	get_encryp_options_ZB[] =	"7E00040852454F11";
+char	set_netwk_key_ZB[] =	"7E001408524E4B0000000000000000000000000000000000";
+char	set_power_mode_ZB[] =	"7E00050852504D0000";
+char	get_power_mode_ZB[] =	"7E00040852504D08";
+char	get_supply_Volt_ZB[] =	"7E0004085225562A";
+char	set_duration_energy_ZB[] =	"7E0005085253440000";
+
 void	WaspXBeeZB::init(uint8_t protocol_used, uint8_t frequency, uint8_t model_used)
 {
 	protocol=protocol_used;
