@@ -554,6 +554,7 @@ bool WaspGPS::check()
 	long previous=0;
 		
 	serialFlush(1);
+	previous=millis();
 	while(!setCommMode(GPS_NMEA_GGA) && (millis()-previous)<3000);
   			
 	// separates all the subarrays from Utils.inBuffer into the Utils.arguments array         
@@ -625,6 +626,7 @@ char* WaspGPS::getLatitude(void)
 	long previous=0;
 
   // get latitude, longitude, altitude, but NOT time
+	previous=millis();
 	while(!setCommMode(GPS_NMEA_GGA) && (millis()-previous)<3000);
 
   // separates all the subarrays from Utils.inBuffer into the Utils.arguments array         
@@ -672,6 +674,7 @@ char* WaspGPS::getLongitude(void)
 	long previous=0;
 
   // get latitude, longitude, altitude, but NOT time
+	previous=millis();
 	while(!setCommMode(GPS_NMEA_GGA) && (millis()-previous)<3000);
 
   // separates all the subarrays from Utils.inBuffer into the Utils.arguments array         
@@ -722,6 +725,7 @@ char* WaspGPS::getSpeed(void)
   long previous=0;
 
   // get speed and course
+  previous=millis();
   while(!setCommMode(GPS_NMEA_VTG) && (millis()-previous)<3000);
 
   // separates all the subarrays from Utils.inBuffer into the Utils.arguments array         
@@ -764,6 +768,7 @@ char* WaspGPS::getAltitude(void)
 	long previous=0;
 
   // get latitude, longitude, altitude, but NOT time
+	previous=millis();
 	while(!setCommMode(GPS_NMEA_GGA) && (millis()-previous)<3000);
 
   // separates all the subarrays from Utils.inBuffer into the Utils.arguments array         
@@ -813,6 +818,7 @@ char* WaspGPS::getCourse(void)
 	long previous=0;
 
   // get speed and course
+	previous=millis();
 	while(!setCommMode(GPS_NMEA_VTG) && (millis()-previous)<3000);
 
   // separates all the subarrays from Utils.inBuffer into the Utils.arguments array         
@@ -1223,6 +1229,7 @@ uint8_t WaspGPS::getPosition()
 	uint32_t timeout = 1000;	// millis to wait before declaring timeout
 		
   	// get all NMEA sentences
+	previous=millis();
 	while(!setCommMode(GPS_NMEA) && (millis()-previous)<3000);
 	
 	// separates all the subarrays from Utils.inBuffer into the Utils.arguments array         
