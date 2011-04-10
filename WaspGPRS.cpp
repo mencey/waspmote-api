@@ -1815,17 +1815,20 @@ uint8_t WaspGPRS::sendCommand(char* ATcommand)
 	sprintf(command, "AT%s%c%c", ATcommand,'\r','\n');
 
 	serialFlush(PORT_USED);
+	USB.print('d');
 	while(!serialAvailable(PORT_USED)) {
 		printString(command,PORT_USED);
 		delay(DELAY_ON_SEND);
+		USB.print('e');
 	}
-	
+	USB.print('a');
 	while( timeout < 5 )
 	{
 		while(!serialAvailable(PORT_USED) && timeout < 5) {
 			timeout++;
 			delay(1000);
 		}
+		USB.print('b');
 		while(serialAvailable(PORT_USED) && timeout < 5){
 			answer_command[i] = serialRead(PORT_USED);
 			delay(20);
@@ -1833,6 +1836,7 @@ uint8_t WaspGPRS::sendCommand(char* ATcommand)
 			timeout=0;
 			if(i>=199) timeout=5;
 		}
+		USB.print('c');
 	}
 	answer_command[i]='\0';
 	if( i<5 ) return 0;
