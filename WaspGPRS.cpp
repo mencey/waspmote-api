@@ -742,11 +742,14 @@ void	WaspGPRS::getIfReady()
 */
 void WaspGPRS::ON()
 {
+	close();
 	disableInterrupts(HAI_INT);
 	disableInterrupts(LAI_INT);
 	if( !RTC.isON ) RTC.setMode(RTC_ON, RTC_I2C_MODE);
-	begin();
+//	delay(2000);
 	setMode(GPRS_ON);
+	begin();
+	delay(1000);
 }
 
 
@@ -813,7 +816,7 @@ uint8_t WaspGPRS::setMode(uint8_t pwrMode)
 	{
 		case    GPRS_ON  	:	pinMode(GPRS_PW, OUTPUT);
 						digitalWrite(GPRS_PW, HIGH);
-						delay(2000);
+						delay(2500);
 						digitalWrite(GPRS_PW, LOW);
 						delay(500);
 						answer=1;
@@ -868,7 +871,7 @@ uint8_t	WaspGPRS::getMode()
 uint8_t WaspGPRS::check()
 {
 	char byte;
-	uint8_t timeout=DEFAULT_TIMEOUT;
+	uint8_t timeout=1;///DEFAULT_TIMEOUT;
 	char command[10];
 	uint8_t answer=0;
 	
