@@ -544,6 +544,19 @@ class WaspSD
    */
   uint8_t writeSD(const char* filename, uint8_t* str, int32_t offset);
   
+  //Andrea Botta
+    //! It writes strings to a file of a specific length
+    /*!
+     \param const char* filename : the file to write to
+     \param const char* str : the string to write into the file
+     \param uint16_t data_len : element's count
+     \param int32_t offset : amount of bytes to jump before start writing the string
+     \param int16_t length : amount of bytes to write to the file
+     \return '1' on success, '0' otherwise
+     \sa
+     */
+   uint8_t writeSD(const char* filename, uint8_t* str, uint16_t data_len, int32_t offset);
+
   //! It writes strings to a file of a specific length
   /*!
   \param const char* filename : the file to write to
