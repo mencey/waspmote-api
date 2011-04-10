@@ -940,7 +940,28 @@ char* WaspGPS::getRaw(int byteAmount)
  */
 void WaspGPS::getChecksum(uint8_t* buffer)
 {
-	int a=4;
+	uint16_t a = 4;
+	uint16_t check = 0;
+	uint16_t payload_length;
+	uint16_t offset;
+
+	payload_length = ((uint16_t)buffer[2]) << 8 | (uint16_t)buffer[3];
+	offset = payload_length + 4;
+
+	while ( a < offset)
+	{
+		check += buffer[a++];
+		check &= 0x7FFF;
+	}
+
+	buffer[offset]   = (uint8_t)((check & 0x7F00) >> 8);
+	buffer[offset+1] = (uint8_t) (check & 0x00FF);
+
+//  checkSUM[0] =  buffer[offset];
+// 	checkSUM[1] =  buffer[offset+1];
+
+
+/*	int a=4;
 	int check=0;
 	uint8_t aux=0, aux2=0;
 	while( (buffer[aux]!=0xB0) || (buffer[aux+1]!=0xB3) )
@@ -967,7 +988,7 @@ void WaspGPS::getChecksum(uint8_t* buffer)
 	{
 		checkSUM[0]=0x00;
 		checkSUM[1]=check;
-	}
+	}	*/
 }
 
 /* saveEphems() - save ephemeris into SD
