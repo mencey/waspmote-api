@@ -223,6 +223,7 @@ void printIntegerInBase(unsigned long n, unsigned long base, uint8_t portNum)
 
 	if (n == 0) {
 		printByte('0', portNum);
+		printByte('0', portNum);
 		return;
 	} 
 
@@ -230,6 +231,8 @@ void printIntegerInBase(unsigned long n, unsigned long base, uint8_t portNum)
 		buf[i++] = n % base;
 		n /= base;
 	}
+	if(i & 0x00000001)
+		printByte('0',portNum);  //Add a leading zero
 
 	for (; i > 0; i--)
 		printByte(buf[i - 1] < 10 ?
