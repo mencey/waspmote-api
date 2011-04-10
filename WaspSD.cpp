@@ -1635,6 +1635,59 @@ uint8_t WaspSD::writeSD(const char* filename, uint8_t* str, int32_t offset)
 	return !exit;
 }
 
+/*   Andrea Botta
+* writeSD ( filename, str, offset ) - write numbers to files
+*
+* writes the array of uint8_t "str" length "len" to the file "filename" after a certain "offset"
+*
+* returns 1 on success, 0 if error, will mark the flag with
+* FILE_WRITING_ERROR
+*/
+
+uint8_t WaspSD::writeSD(const char* filename, uint8_t* str, uint16_t data_len, int32_t offset)
+{
+   struct fat_file_struct* _fd;
+   _fd=fd;
+   // check if the card is there or not
+   if (!isSD())
+   {
+      flag = CARD_NOT_PRESENT;
+      flag |= FILE_WRITING_ERROR;
+      sprintf(buffer,"%s", CARD_NOT_PRESENT_em);
+      return 0;
+   }
+
+   flag &= ~(FILE_WRITING_ERROR);
+   uint8_t exit = 0;
+   // search file in current directory and open it
+   _fd = openFile(filename);
+   if(!_fd)
+   {
+      sprintf(buffer, "error opening: %s\n", filename);
+      exit = 1;
+   }
+
+   if(!exit) if(!fat_seek_file(_fd, &offset, FAT_SEEK_SET))
+   {
+      sprintf(buffer, "error seeking on: %s\n", filename);
+      fat_close_file(_fd);
+      exit = 1;
+   }
+
+   //data_len la passo io
+
+   // write text to file
+   if(!exit) if(fat_write_file(_fd, str, data_len) != data_len)
+   {
+      sprintf(buffer, "error writing to: %s\n", filename);
+      fat_close_file(_fd);
+      exit = 1;
+   }
+
+   if(!exit) fat_close_file(_fd);
+   else flag |= FILE_WRITING_ERROR;
+   return !exit;
+}
 
 /*
  * writeSD ( filename, str, offset, length ) - write strings to files
