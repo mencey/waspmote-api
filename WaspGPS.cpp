@@ -222,7 +222,7 @@ long WaspGPS::gpsatol(char *str)
 void WaspGPS::ON()
 {
 	setMode(GPS_ON);
-	begin();
+//	begin();
 	init();
 }
 
@@ -271,7 +271,8 @@ void WaspGPS::init(const char* _coordinateLat, const char* _coordinateLon, const
   if(reboot)
   {
       begin();
-      delay(3000); 
+      delay(2000);
+      USB.print('j');
   }
   sprintf(Utils.inBuffer,"$PSRF104,%s,%s,%s,%s,%s,%s,%s,%s*00",_coordinateLat,_coordinateLon,_coordinateAl,_clkOffset,_timeOfWeek,_weekNo,_channel,_resetCfg);
   
@@ -281,12 +282,31 @@ void WaspGPS::init(const char* _coordinateLat, const char* _coordinateLon, const
   printByte('\r',1);
   printByte('\n',1);
   
+  delay(1000);
+//  int a;
+//  while((a = serialRead(_uart))!= -1)
+//  {
+//	  USB.print(a, BYTE);
+//	  delay(10);
+//  }
   // Set GPS on binary mode without sending data
-  
+//  USB.print("BINARY");
   previous=millis();
   while( !setCommMode(GPS_BINARY) && (millis()-previous)<3000);
+  if((millis()-previous)>=3000)
+      USB.print('k');
+//  USB.print("BINOFF");
   previous=millis();
-  while(!setCommMode(GPS_BINARY_OFF) && (millis()-previous)<3000);
+//  while(!setCommMode(GPS_BINARY_OFF) && (millis()-previous)<3000);
+  while(!setCommMode(GPS_BINARY_OFF) && !(flag & GPS_TIMEOUT))
+  {
+	  if ((millis() - previous) >= 3000)
+	  {
+		  flag |= GPS_TIMEOUT;
+	      USB.print('l');
+//		  return 0; // Perhaps a more specific code?
+	  }
+  }
   serialFlush(1);
   reboot=HOT;
 }
