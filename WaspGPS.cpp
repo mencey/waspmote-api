@@ -333,14 +333,23 @@ uint8_t WaspGPS::setCommMode(uint16_t mode)
 				printString(Utils.inBuffer,_uart);
 				printByte('\r',_uart);
 				printByte('\n',_uart);
-				delay(10);
-				serialFlush(_uart);
-				delay(10);
+//				delay(10);
+//				serialFlush(_uart);
+				delay(100);
+				int a;
 				if(serialAvailable(_uart)){
-					byteIN[0]=serialRead(_uart);
-					if( (byteIN[0]=='$') || ( (byteIN[0]>'0') && (byteIN[0]<'Z') ) ) valid=0;
-					else valid=1;
+					while((a = serialRead(_uart))!= 0xA0 && a != -1);
+//						USB.print(a, BYTE);
+//					USB.print(a, 16);
+					byteIN[0] = a;
+					byteIN[1]=serialRead(_uart);
+					if( (byteIN[0]== 0xA0) && (byteIN[1] == 0xA2) ) valid = 1;
+					else valid = 0;
+////					byteIN[0]=serialRead(_uart);
+//					if( (byteIN[0]=='$') || ( (byteIN[0]>'0') && (byteIN[0]<'Z') ) ) valid=0;
+//					else valid=1;
 				}
+//				delay(1000);
 				break;
 	  case GPS_BINARY_OFF:	serialFlush(_uart);
 				for(int a=0;a<16;a++)
@@ -348,16 +357,30 @@ uint8_t WaspGPS::setCommMode(uint16_t mode)
 					printByte(tempBuffer2[a],_uart);
 					//if(a==14) serialFlush(_uart);
 				}
-				delay(100);
+				serialFlush(_uart);
+//				USB.print("off");
+				delay(200);
 				if(serialAvailable(_uart))
 				{
-					for(int a=0;a<10;a++)
+					int a;
+					while((a = serialRead(_uart)) != -1 && !valid)
 					{
-						byteIN[a]=serialRead(_uart);
+//						USB.print(a, BYTE);
+						if(a == 0xA0)
+						{
+							for(a=0;a<10;a++)
+							{
+								byteIN[a]=serialRead(_uart);
+//								USB.print(byteIN[a],16);USB.print(' ');
+							}
+							if(byteIN[4]==0xA6) valid=1;
+							else valid=0;
+						}
 					}
 				}
-				if(byteIN[5]==0xA6) valid=1;
-				else valid=0;
+//				if(byteIN[4]==0xA6) valid=1;
+//				else valid=0;
+//				delay(2000);
 		  		break;
 	  case GPS_NMEA:	tempBuffer[8]=0x01;
 	  			tempBuffer[10]=0x01;
