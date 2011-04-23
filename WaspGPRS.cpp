@@ -409,6 +409,7 @@ byte WaspGPRS::sendCommand(char* theText, char* endOfCommand, char* expectedAnsw
     while(!serialAvailable(PORT_USED) && timeout < MAX_TIMEOUT) {
         if (!sendOnce || !timeout) {
             printString(theCommand,PORT_USED);
+            USB.print('T');
         }
         delay(DELAY_ON_SEND);
         timeout++;
@@ -451,9 +452,10 @@ byte WaspGPRS::waitForData(char* expectedAnswer, int MAX_TIMEOUT, int timeout, i
 			timeout++;
 			delay(1000);
 		}
-		
+		USB.print('y');
 		while( serialAvailable(PORT_USED) && !match )
 		{
+			USB.print('z');
 			if( first )
 			{
 				for(it=0;it<theLength;it++)
@@ -461,6 +463,7 @@ byte WaspGPRS::waitForData(char* expectedAnswer, int MAX_TIMEOUT, int timeout, i
 					received[it]=serialRead(PORT_USED);
 					delay(20);
 				}
+				USB.print(received);
 				first=0;
 			}
 			it=0;
@@ -872,12 +875,13 @@ uint8_t WaspGPRS::check()
 {
 	char byte;
 	uint8_t timeout=1;///DEFAULT_TIMEOUT;
-	char command[10];
+	char command[11];
 	uint8_t answer=0;
 	
 	while(timeout)
 	{
 		sprintf(command,"%s%c%c","AT+CREG?",'\r','\n');
+		serialFlush(PORT_USED);
 		printString(command,PORT_USED);
 		answer=waitForData("+CREG: 0,1",1,0,0);
 		switch(answer){
@@ -887,6 +891,8 @@ uint8_t WaspGPRS::check()
 					break;
 			case 	2:	break;
 		}
+//		delay(1000);
+		USB.print('x');
 		printString(command,PORT_USED);
 		answer=waitForData("+CREG: 0,5",1,0,0);
 		switch(answer){
@@ -1812,6 +1818,7 @@ uint8_t WaspGPRS::sendCommand(char* ATcommand)
 	uint8_t timeout=0;
 	uint8_t i=0;
 	
+	answer_command[0]='\0';
 	sprintf(command, "AT%s%c%c", ATcommand,'\r','\n');
 
 	serialFlush(PORT_USED);
