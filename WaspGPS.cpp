@@ -328,14 +328,15 @@ uint8_t WaspGPS::setCommMode(uint16_t mode)
     
   switch(commMode)
   {
-	  case GPS_BINARY:	sprintf(Utils.inBuffer,"$PSRF100,0,%u,8,1,0*0F",_baudRate);
+	  case GPS_BINARY:	USB.print('m');sprintf(Utils.inBuffer,"$PSRF100,0,%u,8,1,0*0F",_baudRate);
 				serialFlush(_uart);
 				printString(Utils.inBuffer,_uart);
 				printByte('\r',_uart);
 				printByte('\n',_uart);
 //				delay(10);
 //				serialFlush(_uart);
-				delay(100);
+//				delay(100);
+				delay(500);
 				int a;
 				if(serialAvailable(_uart)){
 					while((a = serialRead(_uart))!= 0xA0 && a != -1);
@@ -351,7 +352,7 @@ uint8_t WaspGPS::setCommMode(uint16_t mode)
 				}
 //				delay(1000);
 				break;
-	  case GPS_BINARY_OFF:	serialFlush(_uart);
+	  case GPS_BINARY_OFF:	USB.print('n');serialFlush(_uart);
 				for(int a=0;a<16;a++)
 				{
 					printByte(tempBuffer2[a],_uart);
@@ -359,7 +360,7 @@ uint8_t WaspGPS::setCommMode(uint16_t mode)
 				}
 				serialFlush(_uart);
 //				USB.print("off");
-				delay(200);
+				delay(400);
 				if(serialAvailable(_uart))
 				{
 					int a;
@@ -401,13 +402,14 @@ uint8_t WaspGPS::setCommMode(uint16_t mode)
 				}
 				else valid=1;
 		  		break;
-	  case GPS_NMEA_GGA:	for(int c=0;c<32;c++)
+	  case GPS_NMEA_GGA:	USB.print('o');for(int c=0;c<32;c++)
 				{
 					printByte(tempBuffer[c],1);
 				}
 				delay(10);
 				getRaw(100);
 				Utils.strExplode(Utils.inBuffer, ',');
+				USB.print(Utils.inBuffer);
 				if( strcmp(Utils.arguments[0],"$GPGGA") ) 
 				{
 					valid=0;
